@@ -7,7 +7,8 @@
     <title>Pixel Position</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@400,500,600&display=swap"
+        rel="stylesheet">
     @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 
@@ -21,29 +22,36 @@
                     </a>
                 </div>
                 <div class="space-x-6 bold">
-                    <a href="">Job</a>
-                    <a href="">Career</a>
-                    <a href="">Salaries</a>
-                    <a href="">Companies</a>
+
+                    @guest
+                        <a href="/listjobs" class="text-4xl font-extrabold">Jobs</a>
+                    @endguest
+                    @auth
+                        <a href="/">Job</a>
+                        <a href="/career">Career</a>
+                        <a href="/salaries">Salaries</a>
+                        <a href="/companies">Companies</a>
+                    @endauth
+
                 </div>
 
                 @auth
-                <div class="space-x-6 font-bold flex">
-                    <a href="/jobs/create">post a job</a>
+                    <div class="space-x-6 font-bold flex">
+                        <a href="/jobs/create">post a job</a>
 
-                    <form method="POST" action="/logout">
-                        @csrf
-                        @method('DELETE')
-                        <button> Log Out </button>
-                    </form>
-                </div>
+                        <form method="POST" action="/logout">
+                            @csrf
+                            @method('DELETE')
+                            <button> Log Out </button>
+                        </form>
+                    </div>
                 @endauth
 
                 @guest
-                <div class = "space-x-2">
-                    <a href="/register">Sign Up</a>
-                    <a href="/login">Log in</a>
-                </div>
+                    <div class="space-x-2">
+                        <a href="/register">Sign Up</a>
+                        <a href="/login">Log in</a>
+                    </div>
                 @endguest
             </nav>
         </div>
