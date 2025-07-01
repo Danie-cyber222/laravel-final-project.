@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\RegisterUserController;
@@ -16,6 +17,9 @@ Route::get('/', [JobController::class, 'index']);
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
 Route::post('/jobs', [JobController::class, 'store'])->middleware('auth');
 Route::get('/listjobs', [JobController::class, 'show'])->middleware('guest');
+
+
+Route::get('/employerJob', [EmployerController::class, 'show'])->middleware('auth');
 
 //tags routes
 Route::get('/search', SearchController::class);

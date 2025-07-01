@@ -31,6 +31,7 @@
                         <a href="/career">Career</a>
                         <a href="/salaries">Salaries</a>
                         <a href="/companies">Companies</a>
+                        <a href="/employerJob">Jobs</a>
                     @endauth
 
                 </div>
